@@ -83,8 +83,23 @@ def fill_in_the_blank(artist,level):
             blank_no = blank_no + 1
 
         else:
-            # !!!! Jumps back to No 1 !!!
-            print('wrong answer')
-            fill_in_the_blank(artist,level[solution])
+            print('Wrong answer. Try again:')
+
+    nextlevel(artist)
+
+def nextlevel(artist):
+    #Congrats the user after finishing a level.
+    #Lets user chose to play again
+    #argument "artist"
+    print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    print('Congratulations !!! You know a lot about the artist:')
+    print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    yes_no = raw_input('Do you want to play again? yes or no: ')
+    if yes_no == 'yes':
+        game_level()
+    else:
+        print('--------------------------------------------------------')
+        print ('Good Bye!')
+        return
 
 game_level()
