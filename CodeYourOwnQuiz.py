@@ -78,6 +78,7 @@ def fill_in_the_blank(artist,level):
         answer = raw_input('Fill the blank No'+ str(blank_no)+' : ')
         if answer.lower() == (level[blank_no]).lower():
             print(level[blank_no])
+            print(artist.replace('--'+str(blank_no)+'--',(level[blank_no]) )
             blank_no = blank_no + 1
 
         else:
