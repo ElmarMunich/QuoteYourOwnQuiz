@@ -73,12 +73,13 @@ def fill_in_the_blank(artist,level):
     #blank number
     blank_max = 4
     #max number of blanks to fill
+    print(artist)
     while blank_no <= blank_max:
-        print(artist)
         answer = raw_input('Fill the blank No'+ str(blank_no)+' : ')
         if answer.lower() == (level[blank_no]).lower():
             print(level[blank_no])
-            print(artist.replace('--'+str(blank_no)+'--',(level[blank_no]) )
+            artist = (artist.replace('..'+str(blank_no)+'..',(level[blank_no])))
+            print (artist)
             blank_no = blank_no + 1
 
         else:
