@@ -1,44 +1,44 @@
-'''
 #level 1: Richard Paul Astley
 #text
-Rick = 'Rick Astleys 1987 song ..1.. Gonna Give You Up was a No. 1 hit single
+Rick = '''
+Rick Astleys 1987 song ..1.. Gonna Give You Up was a No. 1 hit single
 in 25 countries. The song won the 1988 Brit Award for Best British ..2.. .
 Astley made a comeback in 2007, becoming an ..3.. phenomenon'. His music video
-for "Never Gonna Give You Up" became integral to the meme known as ..4..'.
+for "Never Gonna Give You Up" became integral to the meme known as ..4.. .
+'''
 
 #answers
-{'never':'Never','single':'Single','internet':'Internet',
-'rickrolling':'rickrolling'}
+l1 = {1:'Never',2:'Single',3:'Internet',4:'rickrolling'}
 
 #level 2: Robyn Rihanna Fenty
 #text
-Rihanna = 'Rihanna is a Barbadian-born singer, ..1.. and actress. In 2005,
+Rihanna = '''
+Rihanna is a Barbadian-born singer, ..1.. and actress. In 2005,
 Rihanna rose to fame with the release of her ..2.. studio album Music of the Sun
 and its follow-up A Girl like Me (2006). Many of her songs rank among the
 worlds best-selling singles of all time, including the single ..3..,
 Among numerous awards and accolades, Rihanna has won nine Grammy Awards,
-twelve American MusicAwards and twelve ..4..  Music Awards.'
+twelve American MusicAwards and twelve ..4..  Music Awards.
+'''
 
 #answers
-{'songwriter':'songwriter','debut':'debut','umbrella':'Umbrella',
-'billboard':'Billboard'}
+l2 = {1:'songwriter',2:'debut',3:'Umbrella',4:'Billboard'}
 
 #level 3: Madonna Louise Ciccone
 #text
-Madonna = 'Madonna is an American singer, songwriter, actress, and ..1.. .
+Madonna = '''
+Madonna is an American singer, songwriter, actress, and ..1.. .
 After performing as a ..2.., guitarist and vocalist in the music groups
 Breakfast Club and Emmy, Madonna signed with Sire Records in 1982. Her other
 ventures include fashion design, writing childrens books, opening of health
 clubs, and filmmaking. She also contributed in various charities and founded
 the ..3.. organization in 2006. Upon being confirmed in the Catholic Church in
-1966, she adopted ..4.. as a confirmation name.'
-
-#answers
-{'businesswoman':'businesswoman','drummer':'drummer',
-'raising malawi':'Raising Malawi','veronica': 'Veronica'}
+1966, she adopted ..4.. as a confirmation name.
 '''
 
-level = 0
+#answers
+l3 = {1:'businesswoman',2:'drummer',3:'Raising Malawi',4:'Veronica'}
+
 def game_level():
     #user chooses his level
     #if the user input is not a number 1, 2 or 3 the user is prompted an error message and
@@ -46,38 +46,43 @@ def game_level():
     #the fuction fill_in_the_blank is called with the argument reflecting the chosen level
 
     print ('Welcome to the world of music. In this game you can shine with your music knowledge!!!')
-    level = raw_input('Choose your level: easy, medium or hard')
+    level = raw_input('Choose a level easy, medium or hard: ')
+    # get level from user !!!! raw_input !!!
     if level == 'easy':
         print('You have chosen the easy level, Good luck!')
-        fill_in_the_blank(Rick)
+        fill_in_the_blank(Rick,l1)
     elif level == 'medium':
         print('You have chosen the medium level, Try your best!')
-        fill_in_the_blank(Rihanna)
+        fill_in_the_blank(Rihanna,l2)
     elif level == 'hard':
         print('You have chosen the hard level, You need more than luck!')
-        fill_in_the_blank(Madonna)
+        fill_in_the_blank(Madonna,l3)
     else:
         print('--------------------------------------------------------')
-        print ('You did not choose a level. Try again!')
+        print ('You did not choose a possible level. Try again!')
         game_level()
-'''
-def fill_in_the_blank(artist):
-    blank_fill=1
-    #Prompts a sentence to the user with a blank to fill and loops to the next
-    #sentence if the answer is correct, jumps back otherwise
-    #argument "artist" defined by the chosen level in "game_level"
-    #blank_fill: defines the number of loops (sentences with blanks)
-    #pos: choses the sentence to prompt in the appropriate list
-    while blank_fill <= 4:
-        print('--------------------------------------------------------')
+
+def fill_in_the_blank(artist,level):
+    ''' Input:
+            artist and level as strings from user input
+        Behavior:
+            prints the text with the numbered blanks
+            asks the user to fill the blanks (numbered by solution)
+    '''
+    blank_no = 1
+    #blank number
+    blank_max = 4
+    #max number of blanks to fill
+    while blank_no <= blank_max:
         print(artist)
-        answer = raw_input('Fill the blank >>> use only lower cases <<< : ')
-        if answer == (artist[pos+1]):
-            print(artist[pos+2])
-            pos = pos + 3
-            blank_fill = blank_fill + 1
+        answer = raw_input('Fill the blank No'+ str(blank_no)+' : ')
+        if answer.lower() == (level[blank_no]).lower():
+            print(level[blank_no])
+            blank_no = blank_no + 1
+
         else:
-            print(not_correct)
-'''
+            # !!!! Jumps back to No 1 !!!
+            print('wrong answer')
+            fill_in_the_blank(artist,level[solution])
 
 game_level()
