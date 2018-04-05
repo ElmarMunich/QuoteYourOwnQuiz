@@ -8,7 +8,7 @@ for "Never Gonna Give You Up" became integral to the meme known as ..4.. .
 '''
 
 #answers
-l1 = {1:'Never',2:'Single',3:'Internet',4:'rickrolling'}
+l1 = {1:'Never', 2:'Single', 3:'Internet', 4:'rickrolling'}
 
 #level 2: Robyn Rihanna Fenty
 #text
@@ -22,7 +22,7 @@ twelve American MusicAwards and twelve ..4..  Music Awards.
 '''
 
 #answers
-l2 = {1:'songwriter',2:'debut',3:'Umbrella',4:'Billboard'}
+l2 = {1:'songwriter', 2:'debut', 3:'Umbrella', 4:'Billboard'}
 
 #level 3: Madonna Louise Ciccone
 #text
@@ -37,14 +37,12 @@ the ..3.. organization in 2006. Upon being confirmed in the Catholic Church in
 '''
 
 #answers
-l3 = {1:'businesswoman',2:'drummer',3:'Raising Malawi',4:'Veronica'}
+l3 = {1:'businesswoman', 2:'drummer', 3:'Raising Malawi', 4:'Veronica'}
 
 def game_level():
-    ''' Input:
-            artist and level as strings from user input
-        Behavior:
-            Calls the function "fill_in_the_blank (artist,level)"
-            according to the chosen level'''
+    ''' *Asks the player to choose a level for the quiz
+        *Calls the function fill_in_the_blank with the artist (text with blanks)
+        and level (dictionary with answers)'''
     print ('''Welcome to the world of music. In this game you can shine with
     your music knowledge!!!''')
     level = raw_input('''Choose a level easy, medium or hard: ''')
@@ -63,13 +61,14 @@ def game_level():
         game_level()
 
 def fill_in_the_blank(artist,level):
-    ''' Input:
-            artist and level from function "game_level()"
-            user input (integer) for wrong_answer_max
-        Behavior:
-            prints the text with the numbered blanks
-            prompts the player to fill in wrong_answer_max
-            asks the user to fill the blanks (numbered by solution)
+    ''' *Prompts the text with blanks
+        *asks the user to give the maximum number of wrong answers (integer)
+        *loops through the blanks to fill in prompts the text with the blanks
+         filled in
+        *calls the function nextlevel() or
+        *exits quiz when the max number of wrong answers is reached
+
+
     '''
     blank_no = 1
     #number of blank to fill in
@@ -97,14 +96,10 @@ def fill_in_the_blank(artist,level):
                 print('''Sorry, You have exceeded the max number
                 of wrong answers! Good Bye! ''')
                 return
-    nextlevel(artist)
+    nextlevel()
 
-def nextlevel(artist):
-    ''' Input:
-            string from player
-        Behavior:
-            Starts Quiz over again or quits depending on player's answer
-        '''
+def nextlevel():
+    ''' *asks the player to play again or to exit the quiz: string (yes/else)'''
     print('''
         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         Congratulations !!! You know a lot about the artist:
