@@ -73,6 +73,10 @@ def fill_in_the_blank(artist,level):
     #blank number
     blank_max = 4
     #max number of blanks to fill
+    wrong_answer = 1
+    #counts wrong answers
+    wrong_answer_max = input('''How many tries do you want before the game
+     quits. Chose a number 1, 2 or ... : ''')
     print(artist)
     while blank_no <= blank_max:
         answer = raw_input('Fill the blank No'+ str(blank_no)+' : ')
@@ -81,9 +85,16 @@ def fill_in_the_blank(artist,level):
             artist = (artist.replace('..'+str(blank_no)+'..',(level[blank_no])))
             print (artist)
             blank_no = blank_no + 1
+            wrong_answer = 1
 
         else:
-            print('Wrong answer. Try again:')
+            if wrong_answer < wrong_answer_max:
+                wrong_answer = wrong_answer + 1
+                print('Wrong answer. Try again:')
+            else:
+                print ('You have exceeded the max number of wrong answers!')
+                return
+
 
     nextlevel(artist)
 
