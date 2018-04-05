@@ -1,3 +1,19 @@
+'''Music Quiz:
+all questions are derived from Wikipedia:
+
+Wikipedia contributors. (2018, March 13). Rick Astley. In Wikipedia,
+The Free Encyclopedia. Retrieved 14:47, March 27, 2018, from
+https://en.wikipedia.org/w/index.php?title=Rick_Astley&oldid=830205124
+
+Wikipedia contributors. (2018, March 29). Rihanna. In Wikipedia,
+The Free Encyclopedia. Retrieved 17:44, March 29, 2018, from
+https://en.wikipedia.org/w/index.php?title=Rihanna&oldid=833024608
+
+Wikipedia contributors. (2018, March 27). Madonna (entertainer). In Wikipedia,
+The Free Encyclopedia. Retrieved 18:00, March 29, 2018, from
+https://en.wikipedia.org/w/index.php?title=Madonna_(entertainer)&oldid=832678186
+'''
+
 #level 1: Richard Paul Astley
 #text
 Rick = '''
