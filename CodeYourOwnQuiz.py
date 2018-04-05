@@ -40,43 +40,46 @@ the ..3.. organization in 2006. Upon being confirmed in the Catholic Church in
 l3 = {1:'businesswoman',2:'drummer',3:'Raising Malawi',4:'Veronica'}
 
 def game_level():
-    #user chooses his level
-    #if the user input is not a number 1, 2 or 3 the user is prompted an error message and
-    #the program jumpes back
-    #the fuction fill_in_the_blank is called with the argument reflecting the chosen level
-
-    print ('Welcome to the world of music. In this game you can shine with your music knowledge!!!')
-    level = raw_input('Choose a level easy, medium or hard: ')
+    ''' Input:
+            artist and level as strings from user input
+        Behavior:
+            Calls the function "fill_in_the_blank (artist,level)"
+            according to the chosen level'''
+    print ('''Welcome to the world of music. In this game you can shine with
+    your music knowledge!!!''')
+    level = raw_input('''Choose a level easy, medium or hard: ''')
     # get level from user !!!! raw_input !!!
     if level == 'easy':
-        print('You have chosen the easy level, Good luck!')
+        print('''You have chosen the easy level, Good luck!''')
         fill_in_the_blank(Rick,l1)
     elif level == 'medium':
-        print('You have chosen the medium level, Try your best!')
+        print('''You have chosen the medium level, Try your best!''')
         fill_in_the_blank(Rihanna,l2)
     elif level == 'hard':
-        print('You have chosen the hard level, You need more than luck!')
+        print('''You have chosen the hard level, You need more than luck!''')
         fill_in_the_blank(Madonna,l3)
     else:
-        print('--------------------------------------------------------')
-        print ('You did not choose a possible level. Try again!')
+        print (''' >>> You did not choose a possible level. Try again! <<<''')
         game_level()
 
 def fill_in_the_blank(artist,level):
     ''' Input:
-            artist and level as strings from user input
+            artist and level from function "game_level()"
+            user input (integer) for wrong_answer_max
         Behavior:
             prints the text with the numbered blanks
+            prompts the player to fill in wrong_answer_max
             asks the user to fill the blanks (numbered by solution)
     '''
     blank_no = 1
-    #blank number
+    #number of blank to fill in
     blank_max = 4
-    #max number of blanks to fill
+    #max number of blanks to fill in
     wrong_answer = 1
     #counts wrong answers
     wrong_answer_max = input('''How many tries do you want before the game
-     quits. Chose a number 1, 2 or ... : ''')
+     quits? Chose a number 1, 2 or ... : ''')
+    #sets the max number of wrong answers from user input
     print(artist)
     while blank_no <= blank_max:
         answer = raw_input('Fill the blank No'+ str(blank_no)+' : ')
@@ -86,31 +89,33 @@ def fill_in_the_blank(artist,level):
             print (artist)
             blank_no = blank_no + 1
             wrong_answer = 1
-
         else:
             if wrong_answer < wrong_answer_max:
                 wrong_answer = wrong_answer + 1
                 print('Wrong answer. Try again:')
             else:
-                print ('You have exceeded the max number of wrong answers!')
+                print('''Sorry, You have exceeded the max number
+                of wrong answers! Good Bye! ''')
                 return
-
-
     nextlevel(artist)
 
 def nextlevel(artist):
-    #Congrats the user after finishing a level.
-    #Lets user chose to play again
-    #argument "artist"
-    print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-    print('Congratulations !!! You know a lot about the artist:')
-    print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    ''' Input:
+            string from player
+        Behavior:
+            Starts Quiz over again or quits depending on player's answer
+        '''
+    print('''
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        Congratulations !!! You know a lot about the artist:
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!''')
     yes_no = raw_input('Do you want to play again? yes or no: ')
     if yes_no == 'yes':
         game_level()
     else:
-        print('--------------------------------------------------------')
-        print ('Good Bye!')
+        print ('''
+        Good Bye!
+        ''')
         return
 
 game_level()
