@@ -19,98 +19,110 @@ https://en.wikipedia.org/w/index.php?title=Madonna_(entertainer)&oldid=832678186
 Rick = '''
 Rick Astleys 1987 song ..1.. Gonna Give You Up was a No. 1 hit single
 in 25 countries. The song won the 1988 Brit Award for Best British ..2.. .
-Astley made a comeback in 2007, becoming an ..3.. phenomenon'. His music video
-for "Never Gonna Give You Up" became integral to the meme known as ..4.. .
+Astley made a comeback in 2007, becoming an ..3.. phenomenon'.
+His music video for "Never Gonna Give You Up" became
+integral to the meme known as ..4.. .
 '''
 
 #answers
-l1 = {1:'Never', 2:'Single', 3:'Internet', 4:'rickrolling'}
+level1_answer = ['Never', 'Single', 'Internet', 'rickrolling']
 
 #level 2: Robyn Rihanna Fenty
 #text
 Rihanna = '''
 Rihanna is a Barbadian-born singer, ..1.. and actress. In 2005,
-Rihanna rose to fame with the release of her ..2.. studio album Music of the Sun
-and its follow-up A Girl like Me (2006). Many of her songs rank among the
-worlds best-selling singles of all time, including the single ..3..,
-Among numerous awards and accolades, Rihanna has won nine Grammy Awards,
-twelve American MusicAwards and twelve ..4..  Music Awards.
+Rihanna rose to fame with the release of her ..2.. studio album
+Music of the Sunand its follow-up A Girl like Me (2006).
+Many of her songs rank among the worlds best-selling singles of all time,
+including the single ..3.. . Among numerous awards and accolades,
+Rihanna has won nine Grammy Awards, twelve American Music Awards and
+twelve ..4..  Music Awards.
 '''
 
 #answers
-l2 = {1:'songwriter', 2:'debut', 3:'Umbrella', 4:'Billboard'}
+level2_answer = ['songwriter', 'debut', 'Umbrella', 'Billboard']
 
 #level 3: Madonna Louise Ciccone
 #text
 Madonna = '''
 Madonna is an American singer, songwriter, actress, and ..1.. .
 After performing as a ..2.., guitarist and vocalist in the music groups
-Breakfast Club and Emmy, Madonna signed with Sire Records in 1982. Her other
-ventures include fashion design, writing childrens books, opening of health
-clubs, and filmmaking. She also contributed in various charities and founded
-the ..3.. organization in 2006. Upon being confirmed in the Catholic Church in
-1966, she adopted ..4.. as a confirmation name.
+Breakfast Club and Emmy, Madonna signed with Sire Records in 1982.
+Her other ventures include fashion design, writing childrens books,
+opening of health clubs, and filmmaking. She also contributed in various
+charities and founded the ..3.. organization in 2006. Upon being confirmed
+in the Catholic Church in 1966, she adopted ..4.. as a confirmation name.
 '''
 
 #answers
-l3 = {1:'businesswoman', 2:'drummer', 3:'Raising Malawi', 4:'Veronica'}
+level3_answer = ['businesswoman', 'drummer', 'Raising Malawi', 'Veronica']
 
-def game_level():
-    ''' *Asks the player to choose a level for the quiz
-        *Calls the function fill_in_the_blank with the artist (text with blanks)
-        and level (dictionary with answers)'''
-    print ('''Welcome to the world of music. In this game you can shine with
-    your music knowledge!!!''')
-    level = raw_input('''Choose a level easy, medium or hard: ''')
+
+wrong_answer_max = ''
+#The maximum of wrong answers per blank set by player (global variable)
+level = ''
+#Game level easy, medium or hard choosen by player global variable)
+def start():
+    #prompts the user to choose the maximum number of wrong answers per blank
+    to fill and to choose a game level
+    print ('''
+
+    Welcome to the world of music. Before we start please answer
+            the following questions:''')
+    wrong_answer_max = input('''
+    How many tries do you want before the game quits?
+             Chose a number 1, 2 or ... : ''')
+    #>>>> value does not get passed in following function <<<<<<<
+
+    #sets the max number of wrong answers from user input
+    level = raw_input('''
+    Choose a level easy, medium or hard: ''')
     # get level from user !!!! raw_input !!!
-    if level == 'easy':
-        print('''You have chosen the easy level, Good luck!''')
-        fill_in_the_blank(Rick,l1)
-    elif level == 'medium':
-        print('''You have chosen the medium level, Try your best!''')
-        fill_in_the_blank(Rihanna,l2)
-    elif level == 'hard':
-        print('''You have chosen the hard level, You need more than luck!''')
-        fill_in_the_blank(Madonna,l3)
-    else:
-        print (''' >>> You did not choose a possible level. Try again! <<<''')
-        game_level()
+    game_level(wrong_answer_max,level)
 
-def fill_in_the_blank(artist,level):
+def game_level(wrong_answer_max,level):
+    if level == 'easy':
+        print('''
+        You have chosen the easy level, Good luck!''')
+        fill_in_the_blank(Rick, level1_answer, wrong_answer_max)
+    elif level == 'medium':
+        print('''
+        You have chosen the medium level, Try your best!''')
+        fill_in_the_blank(Rihanna, level2_answer, wrong_answer_max)
+    elif level == 'hard':
+        print('''
+        You have chosen the hard level, You need more than luck!''')
+        fill_in_the_blank(Madonna,level3_answer, wrong_answer_max)
+    else:
+        print ('''
+        >>> You did not choose a possible level. Try again! <<<''')
+        start()
+
+def fill_in_the_blank(artist, level, wrong_answer_max):
     ''' *Prompts the text with blanks
         *asks the user to give the maximum number of wrong answers (integer)
         *loops through the blanks to fill in prompts the text with the blanks
          filled in
         *calls the function nextlevel() or
         *exits quiz when the max number of wrong answers is reached
-
-
     '''
-    blank_no = 1
-    #number of blank to fill in
-    blank_max = 4
-    #max number of blanks to fill in
+
     wrong_answer = 1
     #counts wrong answers
-    wrong_answer_max = input('''How many tries do you want before the game
-     quits? Chose a number 1, 2 or ... : ''')
-    #sets the max number of wrong answers from user input
     print(artist)
-    while blank_no <= blank_max:
-        answer = raw_input('Fill the blank No'+ str(blank_no)+' : ')
-        if answer.lower() == (level[blank_no]).lower():
-            print(level[blank_no])
-            artist = (artist.replace('..'+str(blank_no)+'..',(level[blank_no])))
+    index = 1
+    for i in (level):
+        answer = raw_input('Fill the blank No'+ str(index)+' : ')
+        if answer.lower() == (i).lower():
+            artist = (artist.replace('..'+str(index)+'..',(level[int(index)-1])))
+            index = index + 1
             print (artist)
-            blank_no = blank_no + 1
             wrong_answer = 1
-        else:
-            if wrong_answer < wrong_answer_max:
+        elif wrong_answer < wrong_answer_max:
                 wrong_answer = wrong_answer + 1
                 print('Wrong answer. Try again:')
-            else:
-                print('''Sorry, You have exceeded the max number
-                of wrong answers! Good Bye! ''')
+        elif wrong_answer == wrong_answer_max:
+                print('Sorry, You have too many wrong answers! Good Bye! ')
                 return
     nextlevel()
 
@@ -121,12 +133,12 @@ def nextlevel():
         Congratulations !!! You know a lot about the artist:
         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!''')
     yes_no = raw_input('Do you want to play again? yes or no: ')
-    if yes_no == 'yes':
-        game_level()
+    if yes_no == 'yes' or yes_no == 'y':
+        start()
     else:
         print ('''
         Good Bye!
         ''')
         return
 
-game_level()
+start()
