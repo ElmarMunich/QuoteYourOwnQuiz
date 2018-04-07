@@ -57,30 +57,32 @@ in the Catholic Church in 1966, she adopted ..4.. as a confirmation name.
 #answers
 level3_answer = ['businesswoman', 'drummer', 'Raising Malawi', 'Veronica']
 
-
 wrong_answer_max = ''
 #The maximum of wrong answers per blank set by player (global variable)
 level = ''
-#Game level easy, medium or hard choosen by player global variable)
-def start():
-    #prompts the user to choose the maximum number of wrong answers per blank
-    to fill and to choose a game level
-    print ('''
+#Game level easy, medium or hard choosen by player (global variable)
 
+def start():
+    ''' *prompts the user to choose the maximum number of wrong answers per blank
+        to fill and to choose a game level
+        *values are stored in global variables for later use'''
+    print ('''
+    ************************************************************
     Welcome to the world of music. Before we start please answer
             the following questions:''')
     wrong_answer_max = input('''
     How many tries do you want before the game quits?
              Chose a number 1, 2 or ... : ''')
-    #>>>> value does not get passed in following function <<<<<<<
-
-    #sets the max number of wrong answers from user input
+    # get maximal number of tries from player as integer
     level = raw_input('''
     Choose a level easy, medium or hard: ''')
-    # get level from user !!!! raw_input !!!
-    game_level(wrong_answer_max,level)
+    # get level from user !!!! raw_input in python 2.7 !!!
+    game_level(wrong_answer_max, level)
 
-def game_level(wrong_answer_max,level):
+def game_level(wrong_answer_max, level):
+    ''' *Calls the text with blanks and the list of answers according to the
+        level choosen by playerself.
+        *Input: wrong_answer_max and level'''
     if level == 'easy':
         print('''
         You have chosen the easy level, Good luck!''')
@@ -100,13 +102,11 @@ def game_level(wrong_answer_max,level):
 
 def fill_in_the_blank(artist, level, wrong_answer_max):
     ''' *Prompts the text with blanks
-        *asks the user to give the maximum number of wrong answers (integer)
-        *loops through the blanks to fill in prompts the text with the blanks
-         filled in
-        *calls the function nextlevel() or
+        *loops through the blanks to fill in  and prompts the text again
+        with the blank replaced by the right answer
         *exits quiz when the max number of wrong answers is reached
+        *Inputs: artist, level and wrong_answer_max
     '''
-
     wrong_answer = 1
     #counts wrong answers
     print(artist)
