@@ -81,7 +81,7 @@ def start():
 
 def game_level(wrong_answer_max, level):
     ''' *Calls the text with blanks and the list of answers according to the
-        level choosen by playerself.
+        level choosen by player.
         *Input: wrong_answer_max and level'''
     if level == 'easy':
         print('''
