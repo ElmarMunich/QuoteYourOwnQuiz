@@ -111,9 +111,9 @@ def fill_in_the_blank(artist, level, wrong_answer_max):
     #counts wrong answers
     print(artist)
     index = 1
-    for i in (level):
+    for blank_count in (level):
         answer = raw_input('Fill the blank No'+ str(index)+' : ')
-        if answer.lower() == (i).lower():
+        if answer.lower() == (blank_count).lower():
             artist = (artist.replace('..'+str(index)+'..',(level[int(index)-1])))
             index = index + 1
             print (artist)
