@@ -14,8 +14,8 @@ The Free Encyclopedia. Retrieved 18:00, March 29, 2018, from
 https://en.wikipedia.org/w/index.php?title=Madonna_(entertainer)&oldid=832678186
 '''
 
-# level 1: Richard Paul Astley
-# text
+#level 1: Richard Paul Astley
+#text
 Rick = '''
 Rick Astleys 1987 song ..1.. Gonna Give You Up was a No. 1 hit single
 in 25 countries. The song won the 1988 Brit Award for Best British ..2.. .
@@ -24,11 +24,11 @@ His music video for "Never Gonna Give You Up" became
 integral to the meme known as ..4.. .
 '''
 
-# answers
+#answers
 level1_answer = ['Never', 'Single', 'Internet', 'rickrolling']
 
-# level 2: Robyn Rihanna Fenty
-# text
+#level 2: Robyn Rihanna Fenty
+#text
 Rihanna = '''
 Rihanna is a Barbadian-born singer, ..1.. and actress. In 2005,
 Rihanna rose to fame with the release of her ..2.. studio album
@@ -39,11 +39,11 @@ Rihanna has won nine Grammy Awards, twelve American Music Awards and
 twelve ..4..  Music Awards.
 '''
 
-# answers
+#answers
 level2_answer = ['songwriter', 'debut', 'Umbrella', 'Billboard']
 
-# level 3: Madonna Louise Ciccone
-# text
+#level 3: Madonna Louise Ciccone
+#text
 Madonna = '''
 Madonna is an American singer, songwriter, actress, and ..1.. .
 After performing as a ..2.., guitarist and vocalist in the music groups
@@ -54,21 +54,14 @@ charities and founded the ..3.. organization in 2006. Upon being confirmed
 in the Catholic Church in 1966, she adopted ..4.. as a confirmation name.
 '''
 
-# answers
+#answers
 level3_answer = ['businesswoman', 'drummer', 'Raising Malawi', 'Veronica']
 
 wrong_answer_max = ''
-# The maximum of wrong answers per blank set by player (global variable)
+#The maximum of wrong answers per blank set by player (global variable)
 level = ''
-<<<<<<< HEAD
-# Game level easy, medium or hard choosen by player (global variable)
-
-||||||| merged common ancestors
-#Game level easy, medium or hard choosen by player global variable)
-=======
 #Game level easy, medium or hard choosen by player (global variable)
 
->>>>>>> f8d513f4b6dbe8e8daeacf632b79cbd20990c145
 def start():
     ''' *prompts the user to choose the maximum number of wrong answers per blank
         to fill and to choose a game level
@@ -114,41 +107,15 @@ def fill_in_the_blank(artist, level, wrong_answer_max):
         *exits quiz when the max number of wrong answers is reached
         *Inputs: artist, level and wrong_answer_max
     '''
-<<<<<<< HEAD
     wrong_answer = 0
-    # counts wrong answers
-||||||| merged common ancestors
-
-    wrong_answer = 1
     #counts wrong answers
-=======
-    wrong_answer = 1
-    #counts wrong answers
->>>>>>> f8d513f4b6dbe8e8daeacf632b79cbd20990c145
     print(artist)
-<<<<<<< HEAD
     blank_no = 1
-    # number of blank to fill
     while blank_no <= len(level):
         answer = raw_input('Fill the blank No'+ str(blank_no)+' : ')
         if answer.lower() == (level[blank_no-1]).lower():
             artist = (artist.replace('..'+str(blank_no)+'..',(level[int(blank_no)-1])))
             blank_no = blank_no + 1
-||||||| merged common ancestors
-    index = 1
-    for i in (level):
-        answer = raw_input('Fill the blank No'+ str(index)+' : ')
-        if answer.lower() == (i).lower():
-            artist = (artist.replace('..'+str(index)+'..',(level[int(index)-1])))
-            index = index + 1
-=======
-    index = 1
-    for blank_count in (level):
-        answer = raw_input('Fill the blank No'+ str(index)+' : ')
-        if answer.lower() == (blank_count).lower():
-            artist = (artist.replace('..'+str(index)+'..',(level[int(index)-1])))
-            index = index + 1
->>>>>>> f8d513f4b6dbe8e8daeacf632b79cbd20990c145
             print (artist)
             wrong_answer = 1
         elif wrong_answer < (wrong_answer_max):
